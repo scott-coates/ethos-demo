@@ -1,0 +1,39 @@
+// http://www.colourlovers.com/palette/778713/Miaka
+$src-font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif !default;
+
+$black: #29221F !default;
+$red: #FC354C !default;
+$green: #13747D !default;
+
+$src-dark: $black !default;
+$src-bright-brand: $red !default;
+$src-bright-background: $green !default;
+$src-super-bright: white !default;
+
+$src-font-size-base: 16px !default;
+
+$src-content-section-vertical-space-lg: 160px !default;
+$src-content-section-vertical-space-xs: 40px !default;
+
+// Responsive Viewing
+// --------------------------------------------------
+// taken from bootstrap variables -- "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+$src-screen-xs: 480px !default;
+$src-screen-sm: 768px !default;
+$src-screen-xs-max: ($src-screen-sm - 1) !default;
+
+// Bootstrap
+// --------------------------------------------------
+
+// https://github.com/jtangelder/sass-loader/issues/40#issuecomment-211939541
+// ERROR in ./~/css-loader?sourceMap!./~/postcss-loader!./~/sass-loader?sourceMap!./src/styles/main.scss
+// Module not found: Error: Cannot resolve 'file' or 'directory' ../fonts/bootstrap/glyphicons-halflings-regular.eot in /hermes-ui/src/styles
+$bootstrap-sass-asset-helper: true;
+
+$grid-columns: 24 !default;
+
+$container-lg: 960px !default;
+
+$brand-primary: $src-bright-brand !default;
+
+$headings-line-height: 1.42;

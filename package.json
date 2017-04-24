@@ -1,0 +1,29 @@
+{
+  "name": "react-app-hakathon",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "node-sass": "3.13.0",
+    "react-scripts": "0.8.3"
+  },
+  "dependencies": {
+    "bootstrap-sass": "3.3.7",
+    "express": "4.15.2",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "react-redux": "4.4.5",
+    "react-router": "3.0.0",
+    "redux": "3.5.2",
+    "redux-form": "6.1.1",
+    "smoothscroll-polyfill": "0.3.4",
+    "whatwg-fetch": "2.0.3"
+  },
+  "scripts": {
+    "start": "npm run watch-css & react-scripts start",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass src/styles/index.scss src/styles/index.css",
+    "watch-css": "node-sass src/styles/index.scss src/styles/index.css -w"
+  }
+}

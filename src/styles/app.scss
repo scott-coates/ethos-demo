@@ -1,0 +1,199 @@
+.app {
+
+  .hello {
+    @include at-least-xs {
+      height: inherit;
+      padding-bottom: 25px;
+    }
+  }
+
+  h3 {
+    font-weight: 600;
+  }
+
+  .above-the-fold {
+    background: linear-gradient(rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0.5) 100%), url("http://loremflickr.com/1024/768");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    @include at-least-xs {
+      background-position: top left;
+    }
+
+    .logo-wrapper {
+      text-decoration: none;
+      font-weight: bold;
+      color: $src-bright-brand;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 16px 20px;
+
+      @include at-least-xs {
+        display: block;
+        text-align: center;
+      }
+
+      @include at-least-small {
+        position: fixed;
+        display: inline-block;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+
+      .logo-text {
+        @include font-size(20px);
+        vertical-align: middle;
+        margin-left: 15px;
+      }
+    }
+
+    .jumbotron {
+      @include at-least-small {
+        @include no-col-padding();
+      }
+
+      .blurb {
+        color: $src-super-bright;
+      }
+    }
+
+    .sign-up-wrapper {
+      .btn-lg {
+        font-weight: bold;
+        @include center-block();
+        padding: 24px 48px;
+
+        @include at-least-small {
+          @include font-size(24px);
+          margin-top: 80px;
+        }
+      }
+    }
+  }
+
+  .benefits {
+
+    .row {
+      // http://stackoverflow.com/a/25517025/173957
+      display: flex;
+      align-items: center;
+    }
+
+    h3 {
+      margin-bottom: 5px;
+
+      @include at-least-small {
+        @include font-size(36px);
+      }
+    }
+
+    p {
+      @include at-least-small {
+        @include font-size(24px);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: $src-content-section-vertical-space-xs;
+      }
+    }
+
+    img {
+      @include img-responsive;
+
+      @include at-least-small {
+        height: 224px;
+      }
+    }
+  }
+
+  .signup {
+    background-color: $src-bright-brand;
+    color: $src-super-bright;
+    text-align: center;
+    padding: 40px 0;
+
+    .signup-container {
+      @include at-least-small {
+        @include center-block();
+        width: 420px;
+      }
+
+      h3 {
+        font-weight: bold;
+
+        @include at-least-small {
+          @include font-size(36px);
+        }
+      }
+
+      p {
+        margin: 50px 0;
+
+        @include at-least-small {
+          @include font-size(24px);
+        }
+      }
+
+      input {
+        @include at-least-small {
+          @include font-size(18px);
+        }
+      }
+
+      textarea {
+        @include at-least-small {
+          height: 180px;
+        }
+      }
+
+      .btn-sign-up {
+        border: 1px solid $src-super-bright;
+        width: 100%;
+        @include font-size(24px);
+      }
+    }
+  }
+
+  .footer {
+    background-color: $src-dark;
+    color: $src-super-bright;
+    ul {
+      margin-bottom: 0;
+      @extend .list-inline;
+
+      li {
+        &#footer-copyright {
+          display: block;
+
+          text-align: center;
+
+          padding: 64px 0;
+
+        }
+
+        &.social {
+          float: right;
+
+          @include at-least-small {
+            margin-right: 0;
+            padding-top: 5px;
+            padding-right: 5px;
+          }
+
+          i {
+            background-color: $src-super-bright;
+            text-align: center;
+            color: $src-bright-brand;
+            border-radius: 50%;
+
+            @include at-least-small {
+              width: 20px;
+              height: 20px;
+              padding-top: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
