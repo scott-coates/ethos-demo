@@ -1,4 +1,75 @@
+$grey-color: #F5F5F5;
+$darker-grey: darken($grey-color, 20%);
+$darkest-grey: darken($grey-color, 30%);
+
+$blue-color: #4587EF;
+
+@mixin container-padding {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 12px
+}
+
 .app {
+
+  .box {
+    border-radius: 4px;
+
+    width: 320px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.20);
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    margin: 0 auto;
+
+    .title-row {
+      @include container-padding;
+      display: flex;
+      flex-direction: row;
+
+      border-bottom: 1px solid $darker-grey;
+      background-color: $grey-color;
+
+      a {
+        margin-left: auto;
+        padding-right: 12px;
+      }
+    }
+
+    .label-row {
+      @include container-padding;
+      border-bottom: 1px solid $darkest-grey;
+
+      h5 {
+        @include font-size(14px);
+        color: $darkest-grey;
+      }
+    }
+
+    .tree-row {
+      @include container-padding;
+      min-height: 500px;
+      border-bottom: 1px solid $darkest-grey;
+    }
+
+    .link-row {
+      @include container-padding;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      a {
+        @include font-size(14px);
+        color: $blue-color;
+        text-decoration: none;
+      }
+
+      .btn {
+        background-color: $blue-color;
+        border-color: $blue-color;
+        margin-left: auto;
+        margin-right: 12px;
+      }
+    }
+  }
 
   .hello {
     @include at-least-xs {

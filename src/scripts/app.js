@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 
+import sprite from './../assets/images/icon-sprite.png';
+
 const validate = values => {
   const errors = {};
 
@@ -69,116 +71,32 @@ class App extends Component {
 
     return (
       <div className="app">
-        <div className="above-the-fold hello">
-          <a className="logo-wrapper" href="/">
-            <span className="logo-text">{this.props.app.appName}</span>
-          </a>
-          <div className="jumbotron">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-24">
-                  <h1 className="blurb">Hello, {this.props.app.appName}!</h1>
-                  <h2 className="blurb">Get your hackath-on!
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="sign-up-wrapper">
-            <div className="container">
-              <button className="btn btn-lg btn-primary" onClick={this.scrollToSignUp}>Start Building</button>
-            </div>
-          </div>
-        </div>
-        <div className="content-section benefits">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12">
-                <h3>Create React App</h3>
-                <p>This is built with <a href="https://github.com/facebookincubator/create-react-app">create react
-                  app</a>.
-                </p>
-              </div>
-              <div className="col-sm-11 col-sm-offset-1">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="content-section alt-content-section benefits">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-10">
-              </div>
-              <div className="col-sm-12">
-                <h3>Webpack</h3>
-                <p>NPM scripts and webpack. Very easy. Just run
-                </p>
-                <pre className="code">npm install && npm start</pre>
-              </div>
 
-            </div>
-          </div>
-        </div>
         <div className="content-section benefits">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12">
-                <h3>Redux Form</h3>
-                <p>Use the form below to get signups!
-                </p>
-              </div>
-              <div className="col-sm-11 col-sm-offset-1">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="signup">
           <div className="container">
             <div className="row">
               <div className="col-sm-24">
-                <div className="signup-container">
-
-                  <h3>Let's do This</h3>
-                  <p>
-                    Use this app!
-                  </p>
-
-                  <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                    <Field ElementType="input" type="text" className="form-control" name="name" id="name"
-                           placeholder="Your Full Name*"
-                           component={renderField}/>
-                    <Field ElementType="input" type="email" className="form-control" name="email" id="email"
-                           placeholder="Your E-mail Address*"
-                           component={renderField}/>
-
-                    <Field ElementType="textarea" className="form-control" name="requestContent"
-                           id="request-content"
-                           placeholder="Your Message*"
-                           component={renderField}/>
-                    <div className="form-group">
-                      <button className="btn btn-sm btn-primary btn-sign-up">Sign Up!</button>
-                    </div>
-                  </form>
+                <div className="box">
+                  <div className="title-row">
+                    <h4>Title</h4>
+                    <a href="#"><i className="fa fa-close"></i></a>
+                  </div>
+                  <div className="label-row">
+                    <h5>Label</h5>
+                  </div>
+                  <div className="tree-row">
+                    <h5>Label</h5>
+                  </div>
+                  <div className="link-row">
+                    <a href="#">Link</a>
+                    <div className="btn btn-primary">Done</div>
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
-
-        <footer className="footer">
-          <ul>
-            <li className="social">
-              <a href="https://twitter.com/" target="_blank">
-                <i className="fa fa-twitter"/>
-              </a>
-            </li>
-            <li id="footer-copyright">
-              <span>© {new Date().getFullYear()} {this.props.app.appName}</span>
-            </li>
-          </ul>
-        </footer>
-
       </div>
     );
   }
