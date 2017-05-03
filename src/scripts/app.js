@@ -1,74 +1,73 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
+import dom from 'xmldom';
 
-import sprite from './../assets/images/icon-sprite.png';
+import html from './test-html';
 
-const validate = values => {
-  const errors = {};
 
-  if (!values.name) {
-    errors.name = 'Required';
+function getNodeComponent(node) {
+  var returnNode = null;
+
+  if (node.data && node.data.trim()) {
+    // this is a non-empty text value
+    returnNode = <Text node={node}/>;
+  }
+  else if (node.tagName) {
+    // this is an element
+    returnNode = <Folder node={node}/>;
   }
 
-  if (!values.email) {
-    errors.email = 'Required';
+  if (returnNode) {
+    return <li key={node.lineNumber.toString() + node.columnNumber.toString()}>{returnNode}</li>;
   }
+}
 
-  if (!values.requestContent) {
-    errors.requestContent = 'Required';
+class Text extends Component {
+
+  render() {
+    return <div className="text-node">
+      {this.props.node.data}
+    </div>;
   }
+}
 
-  return errors;
-};
 
-const warn = values => {
-  const warnings = {};
-
-  if (values.requestContent && values.requestContent.length < 10) {
-    warnings.requestContent = 'We\'ll need a little more detail than that.';
-  }
-
-  return warnings;
-};
-
-const renderField = ({ input, ElementType, placeholder, type,className, id, meta: { touched, error, warning } }) => (
-
-  <div className={"form-group" + (touched && error ? " has-error" : "")}>
-    <ElementType {...input} id={id} placeholder={placeholder} type={type} className={className}/>
-    {touched && (warning && <span className="help-block">{warning}</span>)}
-  </div>
-);
-
-class App extends Component {
-
-  scrollToSignUp() {
-    const signup = document.querySelector('.signup');
-    signup.scrollIntoView({behavior: 'smooth'});
-  }
-
-  onSubmit(values) {
-    console.log(values);
+class Folder extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {expanded: false};
   }
 
   handleChange(event) {
-    // TODO - fill in
-    const setState = this.setState.bind(this);
-    this.setState({input: event.target.value});
-    fetch('http://0.0.0.0:3000/?search_text=' + event.target.value)
-      .then(function (response) {
-        return response.json()
-      }).then(function (json) {
-      console.log("json", json); // todo console.log statement
-      setState({results: json});
-    }).catch(function (ex) {
-      console.log('parsing failed', ex)
-    });
+    // todo - set expanded
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const nodeName = this.props.node.nodeName;
 
+    // TODO DRY up this code
+    const childrenNodeComponents = Array.from(this.props.node.childNodes).map(getNodeComponent).filter(Boolean);
+    //const results = this.state.results.map(result =>
+    //  <li key={result.input}>{result.input}</li>
+    //);
+    return <div>
+      <div>{nodeName}</div>
+      <ul>
+        {childrenNodeComponents}
+      </ul>
+    </div>;
+  }
+}
+
+class App extends Component {
+
+  render() {
+
+    const parsedDom   = new dom.DOMParser().parseFromString(html);
+    const bodyElement = parsedDom.getElementsByTagName('body')[0];
+
+    const results = Array.from(bodyElement.childNodes).map(getNodeComponent).filter(Boolean);
     return (
       <div className="app">
 
@@ -85,7 +84,7 @@ class App extends Component {
                     <h5>Label</h5>
                   </div>
                   <div className="tree-row">
-                    <h5>Label</h5>
+                    <ul className="elements">{results}</ul>
                   </div>
                   <div className="link-row">
                     <a href="#">Link</a>
@@ -111,6 +110,4 @@ function extracted(state) {
 App = connect(extracted)(App);
 export default reduxForm({
   form: 'mainForm',  // a unique identifier for this form
-  validate,
-  warn
 })(App);

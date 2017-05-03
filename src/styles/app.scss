@@ -46,8 +46,29 @@ $blue-color: #4587EF;
 
     .tree-row {
       @include container-padding;
+      @include font-size(14px);
+
       min-height: 500px;
       border-bottom: 1px solid $darkest-grey;
+      //background: url('../assets/images/icon-sprite.png');
+      & > ul {
+        padding: 0;
+      }
+
+      & > ul div > ul {
+        padding: 15px;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .text-node {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     .link-row {

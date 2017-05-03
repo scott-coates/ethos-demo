@@ -16,7 +16,8 @@
     "redux": "3.5.2",
     "redux-form": "6.1.1",
     "smoothscroll-polyfill": "0.3.4",
-    "whatwg-fetch": "2.0.3"
+    "whatwg-fetch": "2.0.3",
+    "xmldom": "0.1.27"
   },
   "scripts": {
     "start": "npm run watch-css & react-scripts start",
