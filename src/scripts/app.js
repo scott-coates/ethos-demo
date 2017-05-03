@@ -5,6 +5,7 @@ import dom from 'xmldom';
 
 import html from './test-html';
 
+import cx from 'classnames';
 
 function getNodeComponent(node) {
   var returnNode = null;
@@ -39,24 +40,24 @@ class Folder extends Component {
     this.state = {expanded: false};
   }
 
-  handleChange(event) {
-    // todo - set expanded
+  onToggle(event) {
+    event.stopPropagation();
+    this.setState({expanded: !this.state.expanded});
   }
 
   render() {
-    const nodeName = this.props.node.nodeName;
+    const nodeName      = this.props.node.nodeName;
+    const toggleClasses = cx('toggle', this.state.expanded ? 'collapse' : 'expand');
 
     // TODO DRY up this code
     const childrenNodeComponents = Array.from(this.props.node.childNodes).map(getNodeComponent).filter(Boolean);
-    //const results = this.state.results.map(result =>
-    //  <li key={result.input}>{result.input}</li>
-    //);
-    return <div>
-      <div>{nodeName}</div>
-      <ul>
+
+    return <div className="folder-node">
+      <div><a href="#" className={toggleClasses} onClick={this.onToggle.bind(this)}></a>{nodeName}</div>
+      <ul style={{display: this.state.expanded ? 'block' : 'none' }}>
         {childrenNodeComponents}
       </ul>
-    </div>;
+    </div>
   }
 }
 

@@ -50,19 +50,34 @@ $blue-color: #4587EF;
 
       min-height: 500px;
       border-bottom: 1px solid $darkest-grey;
-      //background: url('../assets/images/icon-sprite.png');
       & > ul {
         padding: 0;
       }
 
       & > ul div > ul {
-        padding: 15px;
+        padding-right: 30px;
       }
 
       ul {
         list-style: none;
       }
+      .folder-node {
+        .toggle {
+          margin-right: 15px;
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          background: no-repeat url('../assets/images/icon-sprite.png');
 
+          &.expand {
+            background-position: -55px 1px;
+          }
+
+          &.collapse {
+            background-position: -70px 1px;
+          }
+        }
+      }
       .text-node {
         width: 200px;
         white-space: nowrap;
